@@ -1,9 +1,12 @@
 package pl.warkocz.cinema.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+
+import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
+@AllArgsConstructor
 public class User {
 
     @Id
@@ -11,10 +14,12 @@ public class User {
 
     private String password;
 
+    @Enumerated(value = EnumType.STRING)
     private Role role;
 
     public User() {
     }
+
 
     public String getUsername() {
         return username;
@@ -38,5 +43,20 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(username, user.username) &&
+                Objects.equals(password, user.password) &&
+                role == user.role;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username, password, role);
     }
 }

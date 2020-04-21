@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register User</title>
+    <link rel="stylesheet" href="https://igoradamenko.github.io/awsm.css/css/awsm.css">
+</head>
+<body>
+<main>
+    <form action="#" method="post" th:action="@{/users}" th:object="${user}">
+        <fieldset>
+            <legend>New User</legend>
+            <label>Username
+                <input type="text" th:field="${}"/>
+            </label>
+        </fieldset>
+    </form>
+
+</main>
+</body>
+</html>
